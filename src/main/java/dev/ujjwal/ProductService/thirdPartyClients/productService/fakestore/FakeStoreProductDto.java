@@ -1,4 +1,4 @@
-package dev.ujjwal.ProductService.dto;
+package dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore;
 
 import lombok.Getter;
 import lombok.Setter;
