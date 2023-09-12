@@ -11,24 +11,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 @Service
 public class FakeStoryProductServiceClient {
-    private RestTemplateBuilder restTemplateBuilder;
+    private final RestTemplateBuilder restTemplateBuilder;
     @Value("${fakestore.api.url}")
     private String fakeStoreApiUrl;
 
     @Value("${fakestore.api.paths.product}")
     private String fakeStoreProductsApiPath;
 
-    private String specificProductRequestUrl ;
-    private String productRequestsBaseUrl ;
+    private final String specificProductRequestUrl ;
+    private final String productRequestsBaseUrl ;
 
+    @Autowired
     public FakeStoryProductServiceClient(RestTemplateBuilder restTemplateBuilder,
                                          @Value("${fakestore.api.url}") String fakeStoreApiUrl,
                                          @Value("${fakestore.api.paths.product}") String fakeStoreProductsApiPath) {
