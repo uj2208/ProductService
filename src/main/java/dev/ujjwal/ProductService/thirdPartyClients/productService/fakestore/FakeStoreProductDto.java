@@ -1,7 +1,10 @@
 package dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore;
 
+import dev.ujjwal.ProductService.models.Category;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Getter
 @Setter

@@ -75,7 +75,7 @@ public class FakeStoryProductServiceClient {
     }
 
 
-    public FakeStoreProductDto updateProductById(Long id, FakeStoreProductDto product) {
+    public FakeStoreProductDto updateProductById(Long id, GenericProductDto product) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         RequestCallback requestCallback = restTemplate.httpEntityCallback(product, FakeStoreProductDto.class);
         ResponseExtractor<ResponseEntity<FakeStoreProductDto>>responseExtractor = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);
