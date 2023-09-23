@@ -44,13 +44,5 @@ public class CategoryController {
             public ResponseEntity<?> deleteProductById(@PathVariable("id") String id) {
                 return new ResponseEntity<>(productServiceApis.deleteProduct(id), HttpStatus.OK);
             }
-
-    //getAllProducts
-    //getAllCategories
-    //getProductById
-    //getProductByCategory
-    //addnewProduct
-    //updateProduct
-    //deleteProduct
 }
 

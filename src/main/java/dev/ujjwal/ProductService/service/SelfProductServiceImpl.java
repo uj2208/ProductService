@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service("selfProductServiceImpl")
 public class SelfProductServiceImpl implements ProductServiceApis{
@@ -29,22 +30,13 @@ public class SelfProductServiceImpl implements ProductServiceApis{
 
     @Override
     public List<ProductDto> getAllProducts() {
-        List<Product> products = productRepository.findAll();
-        List<ProductDto>productDtos = new ArrayList<>();
-        for(Product product : products){
-            productDtos.add(convertToProductDto(product));
-        }
-        return productDtos;
+        List<Product> products = productRepository.findAllProducts();
+      return  products.stream().map(this::convertToProductDto).collect(Collectors.toList());
     }
 
     @Override
     public List<String> getAllCategories() {
-        List<Category> categories = categoryRepository.findAll();
-        List<String>categoryList = new ArrayList<>();
-        for(Category category : categories){
-            categoryList.add(category.getName());
-        }
-        return categoryList;
+       return productRepository.getAllProductCategory();
     }
 
     @Override
@@ -59,16 +51,9 @@ public class SelfProductServiceImpl implements ProductServiceApis{
     @Transactional
     @Override
     public List<ProductDto> getProductsByCategory(String category) {
-        Category category1 = categoryRepository.findByName(category);
-        if(category1!= null){
-            List<Product>products = category1.getProducts();
-            List<ProductDto>productDtos = new ArrayList<>();
-            for(Product product : products){
-                productDtos.add(convertToProductDto(product));
-            }
-            return productDtos;
-        }
-        return null;
+        List<Product> productList = productRepository.getAllProductByCategory(category);
+        return productList.stream().map(this::convertToProductDto).collect(Collectors.toList());
+
     }
 
     @Override

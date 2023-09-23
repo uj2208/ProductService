@@ -21,7 +21,7 @@ public class Category  extends BaseModel{
     private String name;
 
     @OneToMany(mappedBy = "category")
-    @Fetch(FetchMode.SUBSELECT)
+    @Fetch(FetchMode.SELECT)
     private List<Product> products;
     public List<Product> getProducts() {
         if (products == null) {

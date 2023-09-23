@@ -1,6 +1,7 @@
 package dev.ujjwal.ProductService.repositories;
 
 import dev.ujjwal.ProductService.models.Category;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
+@Lazy
 public interface CategoryRepository extends JpaRepository<Category, UUID> {
     Optional<Category> findById(UUID uuid);
 

@@ -17,4 +17,13 @@ import java.util.UUID;
 public interface ProductRepository extends JpaRepository<Product, UUID>{
   Optional<Product>findById(UUID uuid);
 
+  @Query(value = CustomQueries.FIND_ALL_PRODUCT)
+  List<Product> findAllProducts();
+
+  @Query(nativeQuery = true, value = CustomQueries.GET_ALL_PRODUCT_BY_CATEGORY)
+  List<Product> getAllProductByCategory(String categoryName);
+
+  @Query(nativeQuery = true, value = CustomQueries.GET_ALL_PRODUCT_CATEGORY)
+  List<String> getAllProductCategory();
+
 }
