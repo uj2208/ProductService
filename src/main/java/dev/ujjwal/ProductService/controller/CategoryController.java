@@ -1,11 +1,14 @@
 package dev.ujjwal.ProductService.controller;
 import dev.ujjwal.ProductService.dto.ProductDto;
+import dev.ujjwal.ProductService.exception.NotFoundException;
 import dev.ujjwal.ProductService.service.ProductServiceApis;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+@Controller
 @RestController
 @RequestMapping("/product-service")
 public class CategoryController {
@@ -33,7 +36,7 @@ public class CategoryController {
                 return new ResponseEntity<>(productServiceApis.getAllCategories(), HttpStatus.OK);
           }
        @GetMapping("/id/{id}")
-           public ResponseEntity<?> getProductById(@PathVariable("id") String id) {
+           public ResponseEntity<?> getProductById(@PathVariable("id") String id) throws NotFoundException {
                 return new ResponseEntity<>(productServiceApis.getProductById(id), HttpStatus.OK);
            }
         @PutMapping("{id}")

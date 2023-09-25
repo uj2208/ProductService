@@ -1,6 +1,7 @@
 package dev.ujjwal.ProductService.service;
 
 import dev.ujjwal.ProductService.dto.ProductDto;
+import dev.ujjwal.ProductService.exception.NotFoundException;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface ProductServiceApis {
     //getAllCategories
     List<String> getAllCategories();
     //getProductById
-    ProductDto getProductById(String id);
+    ProductDto getProductById(String id) throws NotFoundException;
     //getProductByCategory
     List<ProductDto> getProductsByCategory(String category);
     //addonProduct

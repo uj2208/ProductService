@@ -1,6 +1,5 @@
 package dev.ujjwal.ProductService.dto;
 
-import dev.ujjwal.ProductService.models.Price;
 import lombok.Getter;
 import lombok.Setter;
 

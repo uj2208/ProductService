@@ -1,5 +1,4 @@
 package dev.ujjwal.ProductService.controller;
-import dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore.FakeStoreProductDto;
 import dev.ujjwal.ProductService.dto.GenericProductDto;
 import dev.ujjwal.ProductService.exception.NotFoundException;
 import dev.ujjwal.ProductService.service.ProductService;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 

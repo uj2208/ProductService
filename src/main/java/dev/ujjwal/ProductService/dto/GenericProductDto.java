@@ -1,10 +1,7 @@
 package dev.ujjwal.ProductService.dto;
 
-import dev.ujjwal.ProductService.models.Category;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.UUID;
 
 @Getter
 @Setter

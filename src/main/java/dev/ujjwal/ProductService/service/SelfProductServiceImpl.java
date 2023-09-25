@@ -2,6 +2,7 @@ package dev.ujjwal.ProductService.service;
 
 import dev.ujjwal.ProductService.dto.CategoryDto;
 import dev.ujjwal.ProductService.dto.ProductDto;
+import dev.ujjwal.ProductService.exception.NotFoundException;
 import dev.ujjwal.ProductService.models.Category;
 import dev.ujjwal.ProductService.models.Price;
 import dev.ujjwal.ProductService.models.Product;
@@ -40,12 +41,13 @@ public class SelfProductServiceImpl implements ProductServiceApis{
     }
 
     @Override
-    public ProductDto getProductById(String id) {
+    public ProductDto getProductById(String id) throws NotFoundException{
           Product product = productRepository.findById(UUID.fromString(id)).orElse(null);
             if(product != null){
                 return convertToProductDto(product);
             }
-            return null;
+           else
+            throw new NotFoundException("Product with  id "+id+" not found");
     }
 
     @Transactional

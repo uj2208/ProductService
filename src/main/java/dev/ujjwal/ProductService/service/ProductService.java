@@ -1,6 +1,5 @@
 package dev.ujjwal.ProductService.service;
 
-import dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore.FakeStoreProductDto;
 import dev.ujjwal.ProductService.dto.GenericProductDto;
 import dev.ujjwal.ProductService.exception.NotFoundException;
 

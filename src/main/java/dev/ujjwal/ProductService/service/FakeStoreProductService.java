@@ -1,11 +1,12 @@
 package dev.ujjwal.ProductService.service;
-import dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore.FakeStoreProductDto;
+
 import dev.ujjwal.ProductService.dto.GenericProductDto;
 import dev.ujjwal.ProductService.exception.NotFoundException;
+import dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore.FakeStoreProductDto;
 import dev.ujjwal.ProductService.thirdPartyClients.productService.fakestore.FakeStoryProductServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 

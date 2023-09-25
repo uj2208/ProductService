@@ -20,8 +20,8 @@ public class Category  extends BaseModel{
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    @Fetch(FetchMode.SELECT)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Product> products;
     public List<Product> getProducts() {
         if (products == null) {
