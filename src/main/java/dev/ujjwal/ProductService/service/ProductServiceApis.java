@@ -13,7 +13,7 @@ public interface ProductServiceApis {
     //getProductById
     ProductDto getProductById(String id) throws NotFoundException;
     //getProductByCategory
-    List<ProductDto> getProductsByCategory(String category);
+    List<ProductDto> getProductsByCategory(String category) throws NotFoundException;
     //addonProduct
     ProductDto addonProduct(ProductDto productDto);
     //updateProduct

@@ -52,8 +52,11 @@ public class SelfProductServiceImpl implements ProductServiceApis{
 
     @Transactional
     @Override
-    public List<ProductDto> getProductsByCategory(String category) {
+    public List<ProductDto> getProductsByCategory(String category) throws NotFoundException{
         List<Product> productList = productRepository.getAllProductByCategory(category);
+        if( productList == null || productList.isEmpty()){
+            throw new NotFoundException(" category "+category+" not found");
+        }
         return productList.stream().map(this::convertToProductDto).collect(Collectors.toList());
 
     }

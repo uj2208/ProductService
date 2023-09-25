@@ -23,7 +23,7 @@ public class CategoryController {
     }
 
     @GetMapping("{category}")
-       public ResponseEntity<?> getProductsByCategory(@PathVariable("category") String category) {
+       public ResponseEntity<?> getProductsByCategory(@PathVariable("category") String category) throws NotFoundException{
             return new ResponseEntity<>(productServiceApis.getProductsByCategory(category), HttpStatus.OK);
         }
 
