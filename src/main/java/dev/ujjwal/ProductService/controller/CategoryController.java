@@ -1,7 +1,10 @@
 package dev.ujjwal.ProductService.controller;
+
 import dev.ujjwal.ProductService.dto.ProductDto;
+import dev.ujjwal.ProductService.exception.InValidPatternException;
 import dev.ujjwal.ProductService.exception.NotFoundException;
 import dev.ujjwal.ProductService.service.ProductServiceApis;
+import dev.ujjwal.ProductService.utility.ValidUUId;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,15 +39,18 @@ public class CategoryController {
                 return new ResponseEntity<>(productServiceApis.getAllCategories(), HttpStatus.OK);
           }
        @GetMapping("/id/{id}")
-           public ResponseEntity<?> getProductById(@PathVariable("id") String id) throws NotFoundException {
+           public ResponseEntity<?> getProductById(@PathVariable("id") String id) throws NotFoundException , InValidPatternException {
+                 ValidUUId.isValidUUID(id);
                 return new ResponseEntity<>(productServiceApis.getProductById(id), HttpStatus.OK);
            }
         @PutMapping("{id}")
-            public ResponseEntity<?> updateProductById(@PathVariable("id") String id,@RequestBody ProductDto product) {
+            public ResponseEntity<?> updateProductById(@PathVariable("id") String id,@RequestBody ProductDto product)throws NotFoundException ,InValidPatternException {
+                ValidUUId.isValidUUID(id);
                 return new ResponseEntity<>(productServiceApis.updateProduct(product,id), HttpStatus.OK);
             }
         @DeleteMapping("{id}")
-            public ResponseEntity<?> deleteProductById(@PathVariable("id") String id) {
+            public ResponseEntity<?> deleteProductById(@PathVariable("id") String id) throws NotFoundException ,InValidPatternException {
+               ValidUUId.isValidUUID(id);
                 return new ResponseEntity<>(productServiceApis.deleteProduct(id), HttpStatus.OK);
             }
 }

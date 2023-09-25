@@ -12,4 +12,11 @@ public class ControllerAdvices {
     public ResponseEntity<?> handleNotFoundException(NotFoundException notFoundException ){
         return new ResponseEntity<>(new ExceptionDto(HttpStatus.NOT_FOUND,notFoundException.getMessage()),HttpStatus.NOT_FOUND);
     }
+
+
+     @ExceptionHandler(InValidPatternException.class)
+    public ResponseEntity<?> handleInValidPatternException(InValidPatternException inValidPatternException ){
+        return new ResponseEntity<>(new ExceptionDto(HttpStatus.BAD_REQUEST,inValidPatternException.getMessage()),HttpStatus.BAD_REQUEST);
+    }
 }
+

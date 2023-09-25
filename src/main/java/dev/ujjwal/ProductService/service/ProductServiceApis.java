@@ -17,7 +17,7 @@ public interface ProductServiceApis {
     //addonProduct
     ProductDto addonProduct(ProductDto productDto);
     //updateProduct
-    ProductDto updateProduct(ProductDto productDto , String id);
+    ProductDto updateProduct(ProductDto productDto , String id) throws NotFoundException;
     //deleteProduct
-    ProductDto deleteProduct(String id);
+    ProductDto deleteProduct(String id) throws NotFoundException;
 }

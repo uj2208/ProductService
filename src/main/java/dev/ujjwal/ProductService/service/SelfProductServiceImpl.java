@@ -70,7 +70,7 @@ public class SelfProductServiceImpl implements ProductServiceApis{
 
     @Transactional
     @Override
-    public ProductDto updateProduct(ProductDto productDto, String id) {
+    public ProductDto updateProduct(ProductDto productDto, String id)  throws NotFoundException{
         // Retrieve the existing product by ID
         Optional<Product> optionalProduct = productRepository.findById(UUID.fromString(id));
 
@@ -115,19 +115,19 @@ public class SelfProductServiceImpl implements ProductServiceApis{
 
             return convertToProductDto(existingProduct);
         }
-
-        return null;  // Product with the given ID not found
+        else
+            throw new NotFoundException("Product with  id "+id+" not found");
     }
 
     @Transactional
     @Override
-    public ProductDto deleteProduct(String id) {
+    public ProductDto deleteProduct(String id) throws NotFoundException {
         Product product = productRepository.findById(UUID.fromString(id)).orElse(null);
         if(product != null){
             productRepository.deleteById(UUID.fromString(id));
             return convertToProductDto(product);
         }
-        return null;
+        else throw new NotFoundException("Product with  id "+id+" not found");
     }
    private Product convertToProduct(ProductDto productDto){
      Product product = new Product();
