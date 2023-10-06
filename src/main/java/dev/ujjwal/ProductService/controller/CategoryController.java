@@ -1,5 +1,4 @@
 package dev.ujjwal.ProductService.controller;
-
 import dev.ujjwal.ProductService.dto.ProductDto;
 import dev.ujjwal.ProductService.exception.InValidPatternException;
 import dev.ujjwal.ProductService.exception.NotFoundException;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/product-service")
 public class CategoryController {
-    private  ProductServiceApis productServiceApis;
+    private final ProductServiceApis productServiceApis;
     public CategoryController(@Qualifier("selfProductServiceImpl")ProductServiceApis productServiceApis){
         this.productServiceApis = productServiceApis;
     }
@@ -48,10 +47,10 @@ public class CategoryController {
                 ValidUUId.isValidUUID(id);
                 return new ResponseEntity<>(productServiceApis.updateProduct(product,id), HttpStatus.OK);
             }
-        @DeleteMapping("{id}")
-            public ResponseEntity<?> deleteProductById(@PathVariable("id") String id) throws NotFoundException ,InValidPatternException {
-               ValidUUId.isValidUUID(id);
-                return new ResponseEntity<>(productServiceApis.deleteProduct(id), HttpStatus.OK);
-            }
+            @DeleteMapping("{id}")
+                public ResponseEntity<?> deleteProductById(@PathVariable("id") String id) throws NotFoundException ,InValidPatternException {
+                   ValidUUId.isValidUUID(id);
+                    return new ResponseEntity<>(productServiceApis.deleteProduct(id), HttpStatus.OK);
+                }
 }
 
